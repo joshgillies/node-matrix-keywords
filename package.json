@@ -1,0 +1,26 @@
+{
+  "name": "node-matrix-keywords",
+  "version": "1.0.0",
+  "description": "Render Squiz Matrix keywords with JavaScript!",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshgillies/node-matrix-keywords.git"
+  },
+  "author": "Josh Gillies <npm@joshgilli.es> (http://joshgilli.es/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshgillies/node-matrix-keywords/issues"
+  },
+  "homepage": "https://github.com/joshgillies/node-matrix-keywords",
+  "devDependencies": {
+    "standard": "^3.7.1",
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "mustache": "^2.0.0"
+  }
+}
