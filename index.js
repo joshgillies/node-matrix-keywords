@@ -1,17 +1,16 @@
 var mustache = require('mustache')
 mustache.tags = '% %'
 
-function render (template, data) {
-  var keys = Object.keys(data)
-  var length = keys.length
-  var _data = {}
+function render (template, view) {
+  var keys = Object.keys(view)
+  var _view = {}
 
-  for (var i = 0, key; i < length; i++) {
+  for (var i = 0, key; i < keys.length; i++) {
     key = keys[i]
-    _data['asset_' + key] = data[key]
+    _view['asset_' + key] = view[key]
   }
 
-  return mustache.render(template, _data)
+  return mustache.render(template, _view)
 }
 
 exports.render = render
