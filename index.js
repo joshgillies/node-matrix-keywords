@@ -1,10 +1,22 @@
 var mustache = require('mustache')
+var defaultWriter = new mustache.Writer()
+
 mustache.tags = '% %'
 
-function render (template, view) {
+function unescapeKeywords (template) {
   var KEYWORD_REGEX = /%(asset_name_linked|asset_short_name_linked)\b/g
+  return template.replace(KEYWORD_REGEX, '%&$1')
+}
 
-  var _template = template.replace(KEYWORD_REGEX, '%&$1')
+exports.clearCache = function clearCache () {
+  return defaultWriter.clearCache()
+}
+
+exports.parse = function parse (template, tags) {
+  return defaultWriter.parse(unescapeKeywords(template), tags)
+}
+
+exports.render = function render (template, view, partials) {
   var _view = {
     asset_name_linked: function nameLinked () {
       if (view.name && view.href) {
@@ -25,7 +37,5 @@ function render (template, view) {
     _view['asset_' + key] = view[key]
   }
 
-  return mustache.render(_template, _view)
+  return defaultWriter.render(unescapeKeywords(template), _view, partials)
 }
-
-exports.render = render
